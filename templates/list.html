@@ -1,0 +1,33 @@
+{% extends "model-page.html" %}
+{% block style %}
+<style>
+    .polaroid{
+        width: 300px; height: 450px;
+        box-shadow: 0 4px 8px 0  rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgb(0, 0, 0, 0.2);
+        text-align: center;
+    }
+    .container{
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="row" >
+            {% for p in post %}
+            <div class="col-sm-4"  style="margin-bottom: 70px;">
+                <a href="../detail/{{ p.id }}">
+                <div class="polaroid">
+                    <img src="{{ p.photo.url }}"  style="width: 300px; height: 300px;">
+                    <div class="container">
+                    <p>{{ p.title }}<br>Postado por: {{ p.user }}<br>Em: {{ p.begin_date }}</p>
+                </div>
+                </div></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

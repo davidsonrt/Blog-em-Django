@@ -1,0 +1,48 @@
+<title>Exercício Blog</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+    .jumbotron.header{
+        background-color:rgb(0, 19, 128); 
+        color: white;
+        background-image: linear-gradient(rgb(139, 193, 236),rgb(21, 9, 75));
+    }
+    #menu a{
+        background-color: black;
+        color: white;
+        margin-bottom: 5px; border-left: rgb(94, 94, 94) solid 2px;
+        
+    }#menu a:hover{
+       color:rgb(139, 193, 236) ;
+        border-bottom:rgb(139, 193, 236) solid 2px;
+
+        
+    }
+</style>
+
+<div class="jumbotron header text-center">
+    <h1>Exercício Blog</h1>
+    <p>Bem vindo ao Blog!!</p>
+</div>
+<div class="text-right mr-4">
+    {{request.user.get_username}}
+    <a href="/logout/">Sair</a>
+
+</div>
+<div id="menu">
+    <ul class="nav ml-4 mb-4">
+        <li class="nav-item">
+            <a class="nav-link" href="/post/all/">Todos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/post/user/">Meus</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/post/register/">Criar Post</a>
+        </li>
+    </ul>
+</div>

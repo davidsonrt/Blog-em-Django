@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de usuários</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <style>
+        .jumbotron.header{
+            background-color:rgb(0, 19, 128); 
+            color: white;
+            background-image: linear-gradient(rgb(139, 193, 236),rgb(21, 9, 75));
+        }
+        #menu a{
+            background-color: black;
+            color: white;
+            margin-bottom: 5px; border-left: rgb(94, 94, 94) solid 2px;
+            
+        }#menu a:hover{
+           color:rgb(139, 193, 236) ;
+            border-bottom:rgb(139, 193, 236) solid 2px;
+    
+            
+        }
+    </style>
+    
+    <div class="jumbotron header text-center">
+        <h1>Exercício Blog</h1>
+        <p>Registre-se para acessar ao blog</p>
+    </div>
+
+<div class="container mt-4">
+    <form action="submit", method="POST">{% csrf_token %}
+        <h2>Tela de Login Blog</h2>
+        <div class="form-group">
+            <label for="username">Usuário:</label>
+            <input type="text", class="form-control" id="username" name="username"
+            placeholder="Username">
+        </div> 
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="password", class="form-control" id="password" name="password"
+            placeholder="Senha">
+        </div>
+        <div>
+            {% for message in messages %}
+            <div class="alert alert-danger">
+            <strong>Error!</strong> {{ message }}
+          </div>
+          {% endfor %}
+            <button type="submit" class="btn btn-success">Acessar</button>
+        <a href="/cadastrar_usuario/" class="btn btn-primary">Cadastrar</a>
+
+        </div>
+    </form>
+    
+</div><br>
+{% block content %} {% endblock %}
+{% include "model-footer.html" %}
+</body>
+</html>

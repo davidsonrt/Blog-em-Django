@@ -1,0 +1,59 @@
+{% extends "model-page.html" %}
+{%block content %}
+
+
+  <!-- The Modal -->
+  <div class="modal fade" id="modal_confirm">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Deseja realmente excluir?</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+<div class="modal-body text-right">
+    <a href="/post/delete/{{ post.id }}/">
+    <button type="button" class="btn btn-danger">
+        Excluir
+    </button></a>
+    <button type="button" class="btn btn-default" style=" background-color: rgb(148, 148, 148); color: white;"data-dismiss="modal">
+        Cancelar
+    </button>
+</div>
+
+        </div>
+    </div>
+  </div>
+
+<div class="container mp-4 mb-4">
+    <div class="row">
+        <div class="col-sm-4">
+            <div style="border-color: blue; border-style: solid; width: 356px; height: 300px;">
+                <img src="{{ post.photo.url }}" width="350" height="263" style="margin-top: 16px;">
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <h2>{{ post.title }}</h2>
+            <h5> {{ post.subtitle }} </h5>
+            <p style="font-style: italic;">Postado por: {{ post.user }} &nbsp Em: {{post.begin_date}} </p>
+            <p> {{ post.text }}</p>
+            {% if request.user == post.user %}
+            <a href="/post/register/?id={{ post.id }}">
+            <button type="button" class="btn btn-primary">Alterar</button></a>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_confirm">Excluir</button>
+        {% endif %}
+        <a href="/post/comentar/{{ post.id }}">
+            <button type="button" class="btn btn-primary">Comentar</button></a>
+        <br>
+        </div>
+        <div class="container" style="margin-top: 40px;">
+            <h2  style=" text-decoration: underline; margin-left: 150px;margin-top: 40px; margin-bottom: 50px; color: rgb(19, 19, 87);">Comentários:</h2>
+            {% for c in comentari %}
+                <h3 class="text-center" >{{ c.user }}</h3> <p class="text-center" style="font-style: italic;">{{ c.begin_date }}</p> <p class="text-center" >{{ c.text }}</p>
+            {% endfor %}
+              
+            </div>
+       
+    </div>
+</div>
+
+{% endblock %}

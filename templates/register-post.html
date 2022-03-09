@@ -1,0 +1,38 @@
+
+{% extends "model-page.html" %}
+
+{% block content %}
+ <h1 class="text-center">Criar Post</h1>
+ <form enctype="multipart/form-data" action="submit", method="POST">{% csrf_token %}
+    <input type="number" class="form-control" name="post-id" value="{{ post.id }}" hidden>
+ <div class="container">
+    
+  
+    
+    <div class="form-group">
+        <label for="title"> Título:</label>
+        <input class="form-control" name="title" type="text" value="{{ post.title }}">
+    </div>
+    <div class="form-group">
+        <label for="description">Subtítulo:</label>
+        <textarea class="form-control"  name="subtitle">{{ post.subtitle }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="description">Texto:</label>
+        <textarea class="form-control" rows="10" name="text">{{ post.text }}</textarea>
+    </div>
+    <div class="form-group">
+        <a href="/media/{{post.photo}}" target="_blank">Foto atual</a>
+       <input type="file" class="form-control-file border" name="file" accept="image/*">
+    </div>
+    <button type="submit" class="btn btn-primary">
+        {% if post %}
+        Alterar
+        {% else %}
+        Postar
+        {% endif %}
+        </button>
+</form>
+ </div>
+{% endblock %}
+
